@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Questions.dart';
+import './Answer.dart';
 
 // void main() {
 //   runApp(MyAPP());
@@ -24,37 +25,34 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var questions = [
-      'what is your name',
-      'what is your full name',
-      'whit is your favorite food',
-      'who is favorite actor'
+      {
+        "questionsCollection": 'what si yout favorite food',
+        "answer": ["briyani", 'parota', "chicken"]
+      },
+      {
+        "questionsCollection": 'what si yout favorite animal',
+        "answer": ["Loin", 'Tiger', "Cheeta"]
+      },
+      {
+        "questionsCollection": 'what si yout favorite color',
+        "answer": ["Red", 'Blue', "Green"]
+      },
     ];
+    print(questions.length);
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('iam rithi'),
+          title: const Text('First Quiz App'),
+          backgroundColor: Colors.pink,
         ),
         body: Column(
           children: [
             Questions(
-              questions[_questionIndex],
+              questions[_questionIndex].['questionsCollection'],
             ),
-            ElevatedButton(
-              child: const Text('Answer !'),
-              onPressed: _answerQuetion,
-            ),
-            ElevatedButton(
-              child: const Text('Answer 2'),
-              onPressed: () => print('i am mahesh'),
-            ),
-            ElevatedButton(
-              child: const Text('Answer 3'),
-              onPressed: () {
-                setState(() {
-                  _questionIndex += 1;
-                });
-              },
-            ),
+            Answers(_answerQuetion),
+            Answers(_answerQuetion),
+            Answers(_answerQuetion),
           ],
         ),
       ),

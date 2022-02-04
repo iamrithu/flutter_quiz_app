@@ -10,10 +10,10 @@ class Questions extends StatelessWidget {
     print('rithi');
     return Container(
       width: double.maxFinite,
-      margin: EdgeInsets.all(10.4),
+      margin: const EdgeInsets.all(10.4),
       child: Text(
         questionText,
-        style: TextStyle(fontSize: 20),
+        style: const TextStyle(fontSize: 20),
         textAlign: TextAlign.center,
       ),
     );
