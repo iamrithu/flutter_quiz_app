@@ -50,9 +50,6 @@ class _MyAppState extends State<MyApp> {
             Questions(
               questions[_questionIndex]['questionsCollection'].toString(),
             ),
-            Answers(_answerQuetion),
-            Answers(_answerQuetion),
-            Answers(_answerQuetion),
           ],
         ),
       ),
