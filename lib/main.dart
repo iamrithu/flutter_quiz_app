@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Questions.dart';
-import './Answer.dart';
+import './quiz.dart';
+import './result.dart';
 
 // void main() {
 //   runApp(MyAPP());
@@ -13,40 +13,66 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-var _questionIndex = 0;
-
 class _MyAppState extends State<MyApp> {
 //
-  var questions = [
+  final _questions = [
     {
       "questionsCollection": 'what si yout favorite food',
-      "answer": ["briyani", 'parota', "chicken"]
+      "answer": [
+        {"text": "Briyani", "score": 1},
+        {"text": "Parota", "score": 0},
+        {"text": "ChickenRice", "score": 0},
+      ]
     },
     {
       "questionsCollection": 'what si yout favorite animal',
-      "answer": ["Loin", 'Tiger', "Cheeta"]
+      "answer": [
+        {"text": "Tiger", "score": 0},
+        {"text": "Lion", "score": 1},
+        {"text": "Cheeta", "score": 0},
+      ]
     },
     {
       "questionsCollection": 'what si yout favorite color',
-      "answer": ["Red", 'Blue', "Green"]
+      "answer": [
+        {"text": "Green", "score": 0},
+        {"text": "Blue", "score": 0},
+        {"text": "Red", "score": 1},
+      ]
     },
     {
       "questionsCollection": 'what si yout favorite sports',
-      "answer": ["Cricker", 'Footbas']
+      "answer": [
+        {"text": "Criket", "score": 1},
+        {"text": "Football", "score": 0},
+        {"text": "Kabadi", "score": 0},
+      ]
     },
     {
       "questionsCollection": 'what si yout favorite bike',
-      "answer": ["Yamaha", 'Ktm']
+      "answer": [
+        {"text": "KTM", "score": 0},
+        {"text": "Yamaha", "score": 1},
+        {"text": "Pulsar", "score": 0},
+      ]
     },
     {
       "questionsCollection": 'what si yout favorite cricketer',
-      "answer": ["Ms", 'virat', 'Rohit']
+      "answer": [
+        {"text": "MS.Dhoni", "score": 1},
+        {"text": "Virat", "score": 0},
+        {"text": "Dawan", "score": 0},
+      ]
     },
   ];
 
 //
+  var _questionIndex = 0;
+  var _totalScore = 0;
 
-  void _answerQuetion() {
+  void _answerQuetion(int score) {
+    _totalScore += score;
+
     setState(() {
       _questionIndex += 1;
     });
@@ -60,24 +86,9 @@ class _MyAppState extends State<MyApp> {
           title: const Text('First Quiz App'),
           backgroundColor: Colors.pink,
         ),
-        body: _questionIndex < questions.length
-            ? Column(
-                children: [
-                  Questions(
-                    questions[_questionIndex]['questionsCollection'].toString(),
-                  ),
-                  // Answers(_answerQuetion),
-                  // Answers(_answerQuetion),
-                  // Answers(_answerQuetion),
-                  ...(questions[_questionIndex]['answer'] as List<String>)
-                      .map((ans) {
-                    return Answers(_answerQuetion, ans);
-                  }),
-                ],
-              )
-            : const Center(
-                child: Text('You did'),
-              ),
+        body: _questionIndex < _questions.length
+            ? Quiz(_answerQuetion, _questionIndex, _questions)
+            : Result(_totalScore),
       ),
     );
   }
