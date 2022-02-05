@@ -37,6 +37,18 @@ class _MyAppState extends State<MyApp> {
         "questionsCollection": 'what si yout favorite color',
         "answer": ["Red", 'Blue', "Green"]
       },
+      {
+        "questionsCollection": 'what si yout favorite sports',
+        "answer": ["Cricker", 'Footbas']
+      },
+      {
+        "questionsCollection": 'what si yout favorite bike',
+        "answer": ["Yamaha", 'Ktm']
+      },
+      {
+        "questionsCollection": 'what si yout favorite cricketer',
+        "answer": ["Ms", 'virat', 'Rohit']
+      },
     ];
 
     return MaterialApp(
@@ -50,6 +62,12 @@ class _MyAppState extends State<MyApp> {
             Questions(
               questions[_questionIndex]['questionsCollection'].toString(),
             ),
+            // Answers(_answerQuetion),
+            // Answers(_answerQuetion),
+            // Answers(_answerQuetion),
+            ...(questions[_questionIndex]['answer'] as List<String>).map((ans) {
+              return Answers(_answerQuetion, ans);
+            }),
           ],
         ),
       ),
