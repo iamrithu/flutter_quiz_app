@@ -13,18 +13,18 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-var _questionIndex = 0;
+var questionIndex = 0;
 
 class _MyAppState extends State<MyApp> {
   void _answerQuetion() {
     setState(() {
-      _questionIndex += 1;
+      questionIndex += 1;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
+    var questions = {
       {
         "questionsCollection": 'what si yout favorite food',
         "answer": ["briyani", 'parota', "chicken"]
@@ -36,26 +36,28 @@ class _MyAppState extends State<MyApp> {
       {
         "questionsCollection": 'what si yout favorite color',
         "answer": ["Red", 'Blue', "Green"]
-      },
-    ];
-    print(questions.length);
+      }
+    };
+
+    print(questions);
+
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('First Quiz App'),
-          backgroundColor: Colors.pink,
-        ),
-        body: Column(
-          children: [
-            Questions(
-              questions[_questionIndex].['questionsCollection'],
-            ),
-            Answers(_answerQuetion),
-            Answers(_answerQuetion),
-            Answers(_answerQuetion),
-          ],
-        ),
-      ),
-    );
+        // home: Scaffold(
+        //   appBar: AppBar(
+        //     title: const Text('First Quiz App'),
+        //     backgroundColor: Colors.pink,
+        //   ),
+        //   body: Column(
+        //     children: [
+        //       Questions(
+        //         questions[0]["questionsCollection"],
+        //       ),
+        //       Answers(_answerQuetion),
+        //       Answers(_answerQuetion),
+        //       Answers(_answerQuetion),
+        //     ],
+        //   ),
+        // ),
+        );
   }
 }
