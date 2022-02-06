@@ -4,6 +4,7 @@ class Result extends StatelessWidget {
   // const Result({Key? key}) : super(key: key);
 
   final int resultScore;
+  final Function() restart;
 
   String get value {
     late var text;
@@ -20,15 +21,22 @@ class Result extends StatelessWidget {
     return text;
   }
 
-  Result(this.resultScore);
+  Result(this.resultScore, this.restart);
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(
-        value,
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-      ),
-    );
+        child: Column(
+      children: [
+        Text(
+          value,
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        ),
+        FlatButton(
+          child: Text('Restart Quiz.......'),
+          onPressed: restart,
+        )
+      ],
+    ));
   }
 }
