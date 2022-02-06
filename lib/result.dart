@@ -7,15 +7,15 @@ class Result extends StatelessWidget {
   final Function() restart;
 
   String get value {
-    late var text;
+    late String text;
     if (resultScore > 5) {
-      text = 'Awsome !! , Your score is ${resultScore}';
+      text = 'Awsome !! , Your score is $resultScore';
     } else if (resultScore >= 4) {
-      text = 'Good , Your score is ${resultScore}';
+      text = 'Good , Your score is $resultScore';
     } else if (resultScore >= 1) {
-      text = 'Not bad , Your score is ${resultScore}';
+      text = 'Not bad , Your score is $resultScore';
     } else {
-      text = 'WTF , Your score is ${resultScore}';
+      text = 'WTF , Your score is $resultScore';
     }
 
     return text;
@@ -27,13 +27,13 @@ class Result extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Column(
-      children: [
+      children: <Widget>[
         Text(
           value,
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
-        FlatButton(
-          child: Text('Restart Quiz.......'),
+        TextButton(
+          child: const Text('Restart Quiz.......'),
           onPressed: restart,
         )
       ],
